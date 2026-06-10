@@ -30,7 +30,7 @@ const LoginForm = ({role, title, subtitle}) => {
                     
                     {error && (
                         <div className='mb-6 p-4 bg-rose-50 border border-rose-200 text-rose-700 text-sm rounded-xl flex items-start gap-3'>
-                            <div className='w-1.5 h-1.5 rounded-full bg-rose-500 mt-1.5 shrink-0'/>
+                            <div className='w-1.5 h-1.5 rounded-full bg-rose-500 mt-1.5 shrink-0'/>z
                             {error}
                         </div>
                     )}
@@ -44,7 +44,7 @@ const LoginForm = ({role, title, subtitle}) => {
                             <label htmlFor="password" className="block text-sm font-medium text-slate-700 mb-2">Password</label>
                             <div className="relative">
                                 <input id="password" type={ showPassword ? "text":"password"} value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="Password" className="pr-11" />
-                                <button type="button" aria-label={showPassword ? "Hide password" : "Show password"} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"onClick={() => setShowPassword(!showPassword)}>
+                                <button type="button" aria-label={showPassword ? "Hide password" : "Show password"} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors" onClick={() => setShowPassword(!showPassword)}>
                                     {showPassword ? <EyeOffIcon size={18} /> : <EyeIcon size={18} />}
                                 </button>
                             </div>
