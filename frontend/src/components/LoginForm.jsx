@@ -30,7 +30,7 @@ const LoginForm = ({role, title, subtitle}) => {
                     
                     {error && (
                         <div className='mb-6 p-4 bg-rose-50 border border-rose-200 text-rose-700 text-sm rounded-xl flex items-start gap-3'>
-                            <div className='w-1.5 h-1.5 rounded-full bg-rose-500 mt-1.5 shrink-0'/>z
+                            <div className='w-1.5 h-1.5 rounded-full bg-rose-500 mt-1.5 shrink-0'/>
                             {error}
                         </div>
                     )}
