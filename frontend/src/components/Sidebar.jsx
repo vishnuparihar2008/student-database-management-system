@@ -4,7 +4,7 @@ import { dummyProfileData } from '../assets/assets'
 import { Calendar1Icon, ChevronRightIcon, FileQuestionMark, FileTextIcon, LayoutGridIcon, MenuIcon, SettingsIcon, UserIcon, XIcon, LogOutIcon } from "lucide-react"
 
 const Sidebar = () => {
-    const { pathName } = useLocation()
+    const { pathname } = useLocation()
     const [ userName, setUserName ] = useState('')
     const [ mobileOpen, setMobileOpen ] = useState(false)
 
@@ -14,9 +14,9 @@ const Sidebar = () => {
 
     useEffect(() => {
         setMobileOpen(false)
-    }, [pathName])
+    }, [pathname])
 
-    const role = "" | "STUDENT";
+    const role = "" || "STUDENT";
 
     const navItems = [
         {name: "Dashboard", href: "/dashboard", icon: LayoutGridIcon},
@@ -44,7 +44,7 @@ const Sidebar = () => {
                             <p className="text-[11px] text-slate-500 font-medium">Management System</p>
                         </div>
                     </div>
-                    <button onClick={() => setMobileOpen(false)} className="l:hidden text-slate-400 hover:text-white p-1">
+                    <button aria-label="Close Sidebar" onClick={() => setMobileOpen(false)} className="lg:hidden text-slate-400 hover:text-white p-1">
                         <XIcon size={20}/>
                     </button>
                 </div>
@@ -61,7 +61,7 @@ const Sidebar = () => {
                             </span>
                         </div>
                         <div className="min-w-0">
-                            <p className="text-[13px] font-medium text-slate-200 tuncate">{userName}</p>
+                            <p className="text-[13px] font-medium text-slate-200 truncate">{userName}</p>
                             <p className="text-[11px] text-slate-500 truncate">
                                 {role === "ADMIN" ? "Administrator" : "Student"}
                             </p>
@@ -78,7 +78,7 @@ const Sidebar = () => {
             {/* Navigation List */ }
             <div className="flex-1 px-3 space-y-0.5 overflow-y-auto">
                 { navItems.map((item) => {
-                    const isActive = pathName.startsWith(item.href)
+                    const isActive = pathname.startsWith(item.href)
                     return (
                         <Link key={item.name} to={item.href} className={`group flex items-center gap-3 px-3 py-2.5 rounded-md text-[13px] font-medium transition-all duration-150 relative ${isActive ? "bg-indigo-500/12 text-indigo-300" : "text-slate-300 hover:text-white hover:bg-white/4"}`}>
                             { isActive && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.75 h-5 rounded-r-full bg-indigo-500" /> }
@@ -92,7 +92,7 @@ const Sidebar = () => {
 
             {/* Logout */ }
             <div className="p-3 border-t border-white/6">
-                <button onClick={handleLogout} className="flex items-center ap-3 w-full px-3 py-2.5 rounded-md text-[13px] font-medium text-slate-400 hover:text-rose-400 hover:bg-rose-500/8 transition-all duration-150">
+                <button onClick={handleLogout} className="flex items-center gap-3 w-full px-3 py-2.5 rounded-md text-[13px] font-medium text-slate-400 hover:text-rose-400 hover:bg-rose-500/8 transition-all duration-150">
                     <LogOutIcon className="w-4.25 h-4.25"/>
                     <span>Log out</span>
                 </button>
@@ -103,7 +103,7 @@ const Sidebar = () => {
     return (
         <>
             {/* Mobile Hamburger Button */}
-            <button onClick={() => setMobileOpen(true)} className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-slate-900 text-white rounded-lg shadow-lg border border-white/10">
+            <button aria-label="Open Sidebar" onClick={() => setMobileOpen(true)} className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-slate-900 text-white rounded-lg shadow-lg border border-white/10">
                 <MenuIcon size={20} />
             </button>
 
