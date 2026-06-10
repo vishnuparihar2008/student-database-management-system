@@ -6,13 +6,14 @@ import AdminDashboard from "../components/AdminDashboard"
 
 const Dashboard = () => {
   const [data, setData] = useState(null)
-  const [loading, setLoading] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     setData(dummyAdminDashboardData)
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setLoading(false)
     }, 1000)
+    return () => clearTimeout(timer)
   }, [])
 
   if (loading) return <Loading />
